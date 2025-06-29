@@ -1,0 +1,1050 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hope Bar</title>
+    <!-- Feedback Form -->
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{% static 'home/style.css' %}" />
+    <!-- Menu Reting Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <span style="color:#331B3F;">Hope</span><span style="color:#ACC7B4;">Bar</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active text-success fw-semibold" href="#">Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bestsellers">Best Sellers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feedback">Feedback</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    </li>
+                </ul>
+                <form class="d-flex me-3" role="search">
+                    <input class="form-control me-1" type="search" placeholder="Search menu..." />
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <!-- Cart Icon + Dropdown -->
+                <div class="cart-icon position-relative" id="cart-toggle">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <span
+                        class="cart-count badge rounded-pill bg-success position-absolute top-0 start-100 translate-middle">0</span>
+                    <div class="cart-dropdown shadow-lg p-3">
+                        <div class="cart-items"></div>
+                        <div class="cart-total d-flex justify-content-between border-top pt-3 mt-2">
+                            <span>Total:</span>
+                            <span class="cart-total-amount fw-bold">$0.00</span>
+                        </div>
+                        <div class="cart-buttons d-flex justify-content-between mt-3">
+                            <button class="btn btn-success w-50 me-2">View Cart</button>
+                            <button class="btn btn-warning w-50">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bold">Fresh & Healthy Juice Bar</h1>
+            <p class="lead">Experience the refreshing taste of nature with our premium organic juices and smoothies.
+                Made fresh daily with the finest ingredients.</p>
+            <a href="#menu" class="btn btn-success me-2">View Menu</a>
+            <a href="#order" class="btn btn-warning text-white">Order Now</a>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-md-6">
+                    <img src="/static/media/Clouds.jpg" alt="About Us Image" class="img-fluid rounded-4 shadow">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="fw-bold text-success mb-3">About Us</h2>
+                    <p class="lead text-muted">
+                        At Hope Bar, we're passionate about bringing you nature’s goodness in every sip.
+                        Our mission is to deliver health, happiness, and flavor in one cup. With organic fruits,
+                        eco-friendly practices, and a love for community — we don’t just serve juice, we serve joy.
+                    </p>
+                    <p class="fw-semibold text-dark">“Drink Well, Live Well.”</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="container py-5" id="menu">
+        <h2 class="text-center text-success mb-4">Our Menu</h2>
+        <!-- Filter Buttons -->
+        <div class="text-center mb-4">
+            <button class="btn btn-success me-2 filter-btn" data-filter="fresh">Fresh Juices</button>
+            <button class="btn btn-light me-2 filter-btn" data-filter="smoothies">Smoothies</button>
+            <button class="btn btn-light me-2 filter-btn" data-filter="mocktails">Mocktails</button>
+            <button class="btn btn-light filter-btn" data-filter="chefs">Chefs Choice</button>
+        </div>
+        <!--Fresh Juice-->
+        <div class="menu-category" data-category="fresh">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/Lemonade.jpg" class="card-img-top" alt="Lemonade">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic Lemonade <span class="text-success float-end">$5.99</span>
+                            </h5>
+                            <p class="card-text">Freshly squeezed lemons with honey.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <!--<button class="btn btn-success"
+                                onclick='addToCart({ id: 1, name: "Classic Lemonade", price: 5.99, image: "/static/media/Lemonade.jpg" })'>Add
+                                to Cart</button>-->
+                            <button class="btn add-to-cart" data-id="juice1" data-name="Classic Lemonade"
+                                data-price="5.99" data-image="/static/media/Lemonade.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/Orange.jpg" class="card-img-top" alt="Orange Juice">
+                        <div class="card-body">
+                            <h5 class="card-title"> Orange Juice <span class="text-success float-end">$6.99</span></h5>
+                            <p class="card-text">Freshly squeezed oranges packed with vitamin C.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice2" data-name="Orange Juice" data-price="6.99"
+                                data-image="/static/media/Orange.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/Apple.jpg" class="card-img-top" alt="Apple Juice">
+                        <div class="card-body">
+                            <h5 class="card-title"> Apple Pear <span class="text-success float-end">$7.49</span> </h5>
+                            <p class="card-text">Pear, apples, and a hint of ginger for detox.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice3" data-name="Apple Pear" data-price="7.49"
+                                data-image="/static/media/Apple.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/KiwwiCut.jpg" class="card-img-top" alt="Kiwwi Juice">
+                        <div class="card-body">
+                            <h5 class="card-title"> KiwwiCut <span class="text-success float-end">$7.34</span> </h5>
+                            <p class="card-text">Lemons, kiwwi, and a hint of honey for sweetness.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice4" data-name="KiwwiCut" data-price="7.34"
+                                data-image="/static/media/KiwwiCut.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/LimeKiss.jpg" class="card-img-top" alt="Lime Juice">
+                        <div class="card-body">
+                            <h5 class="card-title"> Lime Kiss <span class="text-success float-end">$6.13</span> </h5>
+                            <p class="card-text">Lime, Pear and a hint of ginger for detox.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice5" data-name="Lime Kiss" data-price="6.13"
+                                data-image="/static/media/LimeKiss.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/Fresh.jpg" class="card-img-top" alt="Fresh Juice">
+                        <div class="card-body">
+                            <h5 class="card-title"> Fresh <span class="text-success float-end">$12.01</span> </h5>
+                            <p class="card-text">Mix fruits, lime, syrup & sparkling water.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice6" data-name="Fresh" data-price="12.01"
+                                data-image="/static/media/Fresh.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Smoothies -->
+        <div class="menu-category d-none" data-category="smoothies">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/AppleSmoothies.jpg" class="card-img-top" alt="apple">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple Smmothies <span class="text-success float-end">$6.99</span>
+                            </h5>
+                            <p class="card-text">Freshly Blended Apple with Lime.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice7" data-name="Apple Smmothies"
+                                data-price="6.99" data-image="/static/media/AppleSmoothies.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/BlueberrySmoothies.jpg" class="card-img-top" alt="BlueberrySmoothies">
+                        <div class="card-body">
+                            <h5 class="card-title"> Blueberry Smoothies <span
+                                    class="text-success float-end">$6.13</span></h5>
+                            <p class="card-text">Most photoghonic drink you can get with delioucious.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice8" data-name="Blueberry Smmothies"
+                                data-price="6.13" data-image="/static/media/BlueberrySmoothies.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/MixFruiteSmoothies.jpg" class="card-img-top" alt="MixFruiteSmoothies">
+                        <div class="card-body">
+                            <h5 class="card-title"> Mix Fruits Smoothies <span
+                                    class="text-success float-end">$7.49</span> </h5>
+                            <p class="card-text">Added most freah & healthy fruites to improve your teast.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice9" data-name="Mix Fruits Smmothies"
+                                data-price="7.49" data-image="/static/media/MixFruiteSmoothies.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/OvernightSmmothies.jpg" class="card-img-top" alt="OvernightSmmothies">
+                        <div class="card-body">
+                            <h5 class="card-title"> Over Night Smoothies <span
+                                    class="text-success float-end">$7.34</span> </h5>
+                            <p class="card-text">Over night soked Sabu and fruite mix.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice10" data-name="Over Night Smmothies"
+                                data-price="7.34" data-image="/static/media/OvernightSmmothies.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/StrawberrySmoothies.jpg" class="card-img-top" alt="StrawberrySmoothies">
+                        <div class="card-body">
+                            <h5 class="card-title"> Strawberry Smoothies <span
+                                    class="text-success float-end">$6.13</span> </h5>
+                            <p class="card-text">Strawberry cooling effect with a littile bit of sweet.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice11" data-name="Strawberry Smoothies"
+                                data-price="6.13" data-image="/static/media/StrawberrySmoothies.jpg">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/WatermelonSmoothies.jpg" class="card-img-top" alt="WatermelonSmoothies">
+                        <div class="card-body">
+                            <h5 class="card-title"> Watermelon Smoothies <span
+                                    class="text-success float-end">$12.01</span> </h5>
+                            <p class="card-text">Watermelon lover come & get your drink.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice12" data-name="Watermelon Smoothies"
+                                data-price="12.01" data-image="/static/media/WatermelonSmoothies.jpg">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mocktails -->
+        <div class="menu-category d-none" data-category="mocktails">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/SPhawai.jpg" class="card-img-top" alt="SPhawai">
+                        <div class="card-body">
+                            <h5 class="card-title">Hawaian Mocktail <span class="text-success float-end">$6.99</span>
+                            </h5>
+                            <p class="card-text">Get an authentic feel as if you're in Hawai.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice13" data-name="Hawaian Mocktail"
+                                data-price="6.99" data-image="/static/media/SPhawai.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/SPpaccion.jpg" class="card-img-top" alt="SPpaccion">
+                        <div class="card-body">
+                            <h5 class="card-title"> Paccionate <span class="text-success float-end">$12.94</span></h5>
+                            <p class="card-text">Sweet, Tanggi, Spicy all together in one glass.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice14" data-name="Paccionate" data-price="12.94"
+                                data-image="/static/media/SPpaccion.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/SPredsea.jpg" class="card-img-top" alt="SPredsea">
+                        <div class="card-body">
+                            <h5 class="card-title"> Red Sea <span class="text-success float-end">$7.49</span>
+                            </h5>
+                            <p class="card-text">Cool and spriteful drink to make you sober.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice15" data-name="Red Sea" data-price="7.49"
+                                data-image="/static/media/SPredsea.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/SPvampireshot.jpg" class="card-img-top" alt="SPvampireshot">
+                        <div class="card-body">
+                            <h5 class="card-title"> Vampire Bite <span class="text-success float-end">$7.34</span>
+                            </h5>
+                            <p class="card-text">Like a vampire never gets drunk, you won't be too.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice16" data-name="Vampire Bite" data-price="7.34"
+                                data-image="/static/media/SPvampireshot.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/SPwhitelove.jpg" class="card-img-top" alt="SPwhitelove">
+                        <div class="card-body">
+                            <h5 class="card-title"> White Love <span class="text-success float-end">$6.13</span>
+                            </h5>
+                            <p class="card-text">Absoulite choise for the white lover people.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice17" data-name="White Love" data-price="6.13"
+                                data-image="/static/media/SPwhitelove.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/SPwitchshot.jpg" class="card-img-top" alt="SPwitchshot">
+                        <div class="card-body">
+                            <h5 class="card-title"> Witch Magic <span class="text-success float-end">$12.01</span>
+                            </h5>
+                            <p class="card-text">Get ready to hipnotize after testing the mix fruite mocktail.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice18" data-name="Witch Magic" data-price="12.30"
+                                data-image="/static/media/SPwitchshot.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Chefs Choise -->
+        <div class="menu-category d-none" data-category="chefs">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/HBberrylove.jpg" class="card-img-top" alt="HBberrylove">
+                        <div class="card-body">
+                            <h5 class="card-title">Berry Love <span class="text-success float-end">$6.99</span>
+                            </h5>
+                            <p class="card-text">Best choise for the berry lovers.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice19" data-name="Berry Love" data-price="6.99"
+                                data-image="/static/media/HBberrylove.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/HBblueberryCoconut.jpg" class="card-img-top" alt="HBblueberryCoconut">
+                        <div class="card-body">
+                            <h5 class="card-title"> Blueberry Coconut <span class="text-success float-end">$6.99</span>
+                            </h5>
+                            <p class="card-text">Blueberry & Coconut for the absoulite satisfaction.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice20" data-name="Blueberry Coconut"
+                                data-price="6.99" data-image="/static/media/HBblueberryCoconut.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/HBcoconutYogurt.jpg" class="card-img-top" alt="HBcoconutYogurt">
+                        <div class="card-body">
+                            <h5 class="card-title"> Coconut Yogurt <span class="text-success float-end">$7.49</span>
+                            </h5>
+                            <p class="card-text">Fresh coconut & freezing Grek Yogurt to give some chill.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice21" data-name="Coconut Yogurt"
+                                data-price="7.49" data-image="/static/media/HBcoconutYogurt.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/HBmixFruite.jpg" class="card-img-top" alt="HBmixFruite">
+                        <div class="card-body">
+                            <h5 class="card-title"> Mix Fruits <span class="text-success float-end">$7.34</span>
+                            </h5>
+                            <p class="card-text">Fresh Fruits and Heathy smoothies.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice22" data-name="Mix Fruits" data-price="7.34"
+                                data-image="/static/media/HBmixFruite.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/HByogurtNuts.jpg" class="card-img-top" alt="HByogurtNuts">
+                        <div class="card-body">
+                            <h5 class="card-title"> Yogurt Nuts <span class="text-success float-end">$6.13</span>
+                            </h5>
+                            <p class="card-text">Yogurt and Nut mix with fresh fruit.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                                <i class="far fa-star" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice23" data-name="Yogurt Nuts" data-price="6.13"
+                                data-image="/static/media/HByogurtNuts.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/media/HByourPick.jpg" class="card-img-top" alt="HByourPick">
+                        <div class="card-body">
+                            <h5 class="card-title"> Your Pick <span class="text-success float-end">$13.06</span>
+                            </h5>
+                            <p class="card-text">Mix fruits whit whatever you choose.</p>
+                            <div class="mb-2">
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star" style="color: purple;"></i>
+                                <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            </div>
+                            <button class="btn add-to-cart" data-id="juice24" data-name="Your Pick" data-price="13.06"
+                                data-image="/static/media/HByourPick.jpg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- JS Code for each part -->
+    <script>
+        const buttons = document.querySelectorAll('.filter-btn');
+        const categories = document.querySelectorAll('.menu-category');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+
+                // Update button active styling
+                buttons.forEach(b => b.classList.remove('btn-success'));
+                buttons.forEach(b => b.classList.add('btn-light'));
+                btn.classList.remove('btn-light');
+                btn.classList.add('btn-success');
+
+                // Show selected category, hide others
+                categories.forEach(cat => {
+                    if (cat.dataset.category === filter) {
+                        cat.classList.remove('d-none');
+                    } else {
+                        cat.classList.add('d-none');
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <!-- Best Sellers -->
+    <section class="container py-5" id="bestsellers">
+        <h2 class="text-center text-success mb-4">Best Sellers</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card position-relative">
+                    <img src="/static/media/BlueSky.jpg" class="card-img-top" alt="Bluesky">
+                    <span class="badge bg-warning position-absolute top-0 end-0 m-2">Top Rated</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Blue Sky</h5>
+                        <p class="text-success fw-bold">$6.99</p>
+                        <p><i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star-half-alt" style="color: purple;"></i> (128 reviews)
+                        </p>
+                        <p class="card-text">Tropical fruite mixed with fresh mint and sparkling water.</p>
+                        <button class="btn add-to-cart" data-id="juice25" data-name="Blue Sky" data-price="6.99"
+                            data-image="/static/media/BlueSky.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card position-relative">
+                    <img src="/static/media/GreenTip.jpg" class="card-img-top" alt="Green Paradise">
+                    <span class="badge bg-warning position-absolute top-0 end-0 m-2">Best Value</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Green Paradise</h5>
+                        <p class="text-success fw-bold">$8.49</p>
+                        <p><i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            <i class="far fa-star" style="color: purple;"></i> (95 reviews)
+                        </p>
+                        <p class="card-text">Green Apple, Kiwwi, Spnich & fresh Cucamber.</p>
+                        <button class="btn add-to-cart" data-id="juice26" data-name="Green Paradise" data-price="8.49"
+                            data-image="/static/media/GreenTip.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card position-relative">
+                    <img src="/static/media/FreshWhite.jpg" class="card-img-top" alt="Fresh Whie">
+                    <span class="badge bg-warning position-absolute top-0 end-0 m-2">New!</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh White</h5>
+                        <p class="text-success fw-bold">$8.99</p>
+                        <p><i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star-half-alt" style="color: purple;"></i> (42 reviews)
+                        </p>
+                        <p class="card-text">Vodka, Egg white, Alchole, 1 shot espresso.</p>
+                        <button class="btn add-to-cart" data-id="juice27" data-name="Fresh White" data-price="8.99"
+                            data-image="/static/media/FreshWhite.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card position-relative">
+                    <img src="/static/media/Cappumix.jpg" class="card-img-top" alt="Cappumix">
+                    <span class="badge bg-warning position-absolute top-0 end-0 m-2">Top Rated</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Cappumix</h5>
+                        <p class="text-success fw-bold">$6.13</p>
+                        <p><i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star-half-alt" style="color: purple;"></i>
+                            <i class="far fa-star" style="color: purple;"></i> (613 reviews)
+                        </p>
+                        <p class="card-text">Vodka, Whisky, 3 shot Espresso.</p>
+                        <button class="btn add-to-cart" data-id="juice28" data-name="Cappumix" data-price="6.13"
+                            data-image="/static/media/Cappumix.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card position-relative">
+                    <img src="/static/media/SnowWhite.jpg" class="card-img-top" alt="SnowWhite">
+                    <span class="badge bg-warning position-absolute top-0 end-0 m-2">My Favourite</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Snow White</h5>
+                        <p class="text-success fw-bold">$17.40</p>
+                        <p><i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star-half-alt" style="color: purple;"></i> (174 reviews)
+                        </p>
+                        <p class="card-text">Coconut water, Vodka, Whisky mixed with sparkling water.</p>
+                        <button class="btn add-to-cart" data-id="juice29" data-name="Snow White" data-price="17.40"
+                            data-image="/static/media/SnowWhite.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card position-relative">
+                    <img src="/static/media/CinnamonShot.jpg" class="card-img-top" alt="CinnamonShot">
+                    <span class="badge bg-warning position-absolute top-0 end-0 m-2">Top Choise</span>
+                    <div class="card-body">
+                        <h5 class="card-title">Cinnamon Shot</h5>
+                        <p class="text-success fw-bold">$12.30</p>
+                        <p><i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star" style="color: purple;"></i>
+                            <i class="fas fa-star-half-alt" style="color: purple;"></i> (1230 reviews)
+                        </p>
+                        <p class="card-text">2 shot Espresso, Cinnamon, Lime, Vodka.</p>
+                        <button class="btn add-to-cart" data-id="juice30" data-name="Cinnamon Shot" data-price="12.30"
+                            data-image="/static/media/CinnamonShot.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="container my-5" id="feedback">
+        <div class="row align-items-center shadow-lg rounded-4 overflow-hidden">
+            <!-- Image -->
+            <div class="col-md-6 p-0">
+                <img src="/static/media/Tangerin.jpg" class="img-fluid w-100 h-100 object-fit-cover"
+                    alt="Tangerin Juice">
+            </div>
+
+            <!-- Feedback Form -->
+            <div class="col-md-6 p-4 bg-white">
+                <h2 class="text-center text-success mb-4">Give Us Feedback</h2>
+                <p>Have an enquiry or would like to give us feedback?<br> Fill out the form below to contact our team.
+                </p>
+                <form method="POST" action="{% url 'submit_feedback' %}" class="shadow-lg p-4 bg-white rounded-4">
+                    {% csrf_token %}
+                    {{ feedback_form.as_p }}
+                    <button type="submit" class="btn btn-primary px-4">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Toast 
+    <div id="cart-toast" class="toast align-items-center text-white bg-success position-fixed bottom-0 end-0 m-4"
+        role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 1055; display: none;">
+        <div class="d-flex">
+            <div class="toast-body" id="toast-message">
+                Item added to cart!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"
+                onclick="hideToast()"></button>
+        </div>
+    </div> -->
+    <!-- Toast Notification -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+        <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                    Item added to cart!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-light pt-5 pb-3">
+        <div class="container">
+            <div class="row gy-4">
+                <!-- Brand Info -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Hope Bar</h5>
+                    <hr class="text-success w-25 mb-2">
+                    <p>Juice It Up is your healthy, convenient alternative to fast food. Get all the flavor, nutrients,
+                        and satisfaction you need, without the hangover.</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i
+                                class="bi bi-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i
+                                class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <hr class="text-success w-25 mb-2">
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-light">Home</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">About Us</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Menu</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Best Sellers</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Feedback</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold">Contact Us</h5>
+                    <hr class="text-success w-25 mb-2">
+                    <p><i class="bi bi-geo-alt-fill"></i> 123 Juice Street, Healthy City</p>
+                    <p><i class="bi bi-telephone-fill"></i> (123) 456-7890</p>
+                    <p><i class="bi bi-envelope-fill"></i> info@freshsqueeze.com</p>
+                    <p><i class="bi bi-clock-fill"></i> Mon–Sat: 7:00 AM – 6:13 PM</p>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-3">
+                    <h5 class="fw-bold text-white">Newsletter</h5>
+                    <hr class="text-success w-25 mb-2">
+                    <p class="text-light">Subscribe to our newsletter for the latest updates and offers.</p>
+
+                    <form method="POST" action="{% url 'subscribe_newsletter' %}"
+                        class="newsletter-form d-flex flex-column gap-2">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ newsletter_form.email|add_class:"form-control rounded-pill px-3 py-2" }}
+                        </div>
+                        <button type="submit" class="btn btn-success btn-sm rounded-pill px-4">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="text-center mt-4 border-top pt-3 small text-secondary">
+                © 2025 Hope Bar. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-success fw-bold" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4">
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mb-2">Login</button>
+                        <div class="text-center">
+                            <span>
+                                Don't have an account?<a href="{% url 'register' %}" class="text-success">Register</a>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your custom JavaScript -->
+    <script src="{% static 'home/cart.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Add Cart JS -->
+    <script>
+        const cartDropdown = document.querySelector('.cart-dropdown');
+        const cartIcon = document.getElementById('cart-toggle');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const cartTotal = document.querySelector('.cart-total-amount');
+        const cartCount = document.querySelector('.cart-count');
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center">Your cart is empty</p>';
+                cartTotal.textContent = '$0.00';
+                cartCount.textContent = '0';
+                cartDropdown.classList.remove('show');
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                cartItemsContainer.innerHTML += `
+        <div class="cart-item">
+          <div class="cart-item-img">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="cart-item-content">
+            <div class="cart-item-title">${item.name}</div>
+            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+            <div class="cart-item-quantity">
+              <button class="cart-quantity-btn decrease-quantity" data-index="${index}">-</button>
+              <input type="number" class="cart-quantity-input" value="${item.quantity}" min="1" data-index="${index}">
+              <button class="cart-quantity-btn increase-quantity" data-index="${index}">+</button>
+              <span class="cart-remove" data-index="${index}">Remove</span>
+            </div>
+          </div>
+        </div>`;
+            });
+
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartDropdown.classList.add('show');
+
+            document.querySelectorAll('.decrease-quantity').forEach(btn =>
+                btn.addEventListener('click', () => {
+                    const index = btn.dataset.index;
+                    if (cart[index].quantity > 1) cart[index].quantity--;
+                    updateCart();
+                    saveCart();
+                })
+            );
+
+            document.querySelectorAll('.increase-quantity').forEach(btn =>
+                btn.addEventListener('click', () => {
+                    const index = btn.dataset.index;
+                    cart[index].quantity++;
+                    updateCart();
+                    saveCart();
+                })
+            );
+
+            document.querySelectorAll('.cart-quantity-input').forEach(input =>
+                input.addEventListener('change', () => {
+                    const index = input.dataset.index;
+                    const value = parseInt(input.value);
+                    if (value > 0) {
+                        cart[index].quantity = value;
+                        updateCart();
+                        saveCart();
+                    } else {
+                        input.value = 1;
+                    }
+                })
+            );
+
+            document.querySelectorAll('.cart-remove').forEach(btn =>
+                btn.addEventListener('click', () => {
+                    const index = btn.dataset.index;
+                    cart.splice(index, 1);
+                    updateCart();
+                    saveCart();
+                })
+            );
+        }
+
+        function addToCart(item) {
+            const index = cart.findIndex(i => i.id === item.id);
+            if (index !== -1) {
+                cart[index].quantity++;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            updateCart();
+            saveCart();
+            cartDropdown.classList.add('show');
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toastEl = document.getElementById('cartToast');
+            const toastBody = document.getElementById('toastMessage');
+            toastBody.textContent = message;
+
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const itemId = btn.dataset.id;
+                const itemName = btn.dataset.name;
+                const itemPrice = parseFloat(btn.dataset.price);
+                const itemImage = btn.dataset.image;
+
+                addToCart({
+                    id: itemId,
+                    name: itemName,
+                    price: itemPrice,
+                    image: itemImage
+                });
+
+                showToast(`${itemName} added to cart!`);
+            });
+        });
+
+        // Toggle dropdown on cart icon
+        cartIcon.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (cart.length > 0) {
+                cartDropdown.classList.toggle('show');
+            }
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.cart-dropdown') && !e.target.closest('.cart-icon')) {
+                cartDropdown.classList.remove('show');
+            }
+        });
+
+        updateCart();
+    </script>
+
+</body>
+
+</html>
